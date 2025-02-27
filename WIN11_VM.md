@@ -8,9 +8,9 @@ Using an AMD Ryzen 7950x
 
 ## Files
 
-Current libvirt xml here: https://github.com/makidoll/dots/blob/main/win11/win11.xml
+Current libvirt xml here: https://github.com/makinori/dots/blob/main/win11/win11.xml
 
-Script to start and stop: https://github.com/makidoll/dots/blob/main/win11/win11.sh
+Script to start and stop: https://github.com/makinori/dots/blob/main/win11/win11.sh
 
 ## Notes
 

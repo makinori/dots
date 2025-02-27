@@ -7,7 +7,7 @@ Everything here has been tested with PipeWire
 Uses wireplumber and systemd
 
 -   ```bash
-    wget https://raw.githubusercontent.com/makidoll/dots/main/other/fix-mic-volume.lua
+    wget https://raw.githubusercontent.com/makinori/dots/main/other/fix-mic-volume.lua
     chmod +x fix-mic-volume.lua
     ```
 
@@ -69,4 +69,4 @@ WantedBy=default.target
 # Setup DeaDBeeF
 
 -   `yay -S deadbeef-git deadbeef-mpris2-plugin deadbeef-plugin-fb-gtk3-git deadbeef-plugin-spectrogram-gtk3-git deadbeef-plugin-discord-git`
--   [`.config/deadbeef/config`](https://raw.githubusercontent.com/makidoll/dots/main/.config/deadbeef/config)
+-   [`.config/deadbeef/config`](https://raw.githubusercontent.com/makinori/dots/main/.config/deadbeef/config)

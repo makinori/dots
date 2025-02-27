@@ -70,7 +70,7 @@ recommended to install below using yay cause devs arent updating their extension
         `/bin/sh -c "/usr/bin/checkupdates && /usr/bin/yay -Qua"`
     -   Command to update packages:<br>
         `gnome-terminal -- /bin/sh -c "~/update-all.sh; echo Done - Press enter to exit; read _"`
-    -   In home folder, place [update-all.sh](https://raw.githubusercontent.com/makidoll/dots/main/other/update-all.sh)
+    -   In home folder, place [update-all.sh](https://raw.githubusercontent.com/makinori/dots/main/other/update-all.sh)
 
 extras but not using. the less addons the better
 
