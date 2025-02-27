@@ -35,20 +35,11 @@
     find Files/* -type f -exec chmod 644 {} +
     ```
 
--   use [quickemu](https://aur.archlinux.org/packages/quickemu) for easy windows or mac vm
+-   fix chromium and electron on wayland
 
-    > im currently doing a gpu passthrough which is quite a bit more complicated.<br>
-    > find more info here https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF<br>
-    > i also highly recommend https://looking-glass.io
-
-    -   `mkdir ~/quickemu && cd ~/quickemu`
-    -   `quickget windows 11`
-    -   `quickemu --vm windows-11.conf`
-    -   install spice tools from attached drive and shutdown vm
-    -   download and run [`run-windows.sh`](https://github.com/makidoll/dots/blob/main/other/run-windows.sh)
-    -   install software gl+dx support https://github.com/pal1000/mesa-dist-win/releases
-        -   in admin run `systemwidedeploy.cmd` and `1. Core desktop OpenGL drivers`
-        -   test with [GPU Caps Viewer](https://www.geeks3d.com/dlz/). should be higher than gl 1.0
+    ```bash
+    ./other/wayland-chromium-flags.sh
+    ```
 
 ## Not really using these
 
@@ -74,3 +65,18 @@
 -   guide to install affinity suite
 
     https://codeberg.org/wanesty/affinity-wine-docs/src/branch/guide-wine8.14
+
+-   use [quickemu](https://aur.archlinux.org/packages/quickemu) for easy windows or mac vm
+
+    > im currently doing a gpu passthrough which is quite a bit more complicated.<br>
+    > find more info here https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF<br>
+    > i also highly recommend https://looking-glass.io
+
+    -   `mkdir ~/quickemu && cd ~/quickemu`
+    -   `quickget windows 11`
+    -   `quickemu --vm windows-11.conf`
+    -   install spice tools from attached drive and shutdown vm
+    -   download and run [`run-windows.sh`](https://github.com/makidoll/dots/blob/main/other/run-windows.sh)
+    -   install software gl+dx support https://github.com/pal1000/mesa-dist-win/releases
+        -   in admin run `systemwidedeploy.cmd` and `1. Core desktop OpenGL drivers`
+        -   test with [GPU Caps Viewer](https://www.geeks3d.com/dlz/). should be higher than gl 1.0
