@@ -7,7 +7,7 @@ function write_config {
 
 	cat << EOF > "$file_path"
 --ozone-platform=wayland
---enable-features=UseOzonePlatform,WaylandWindowDecorations
+--enable-features=UseOzonePlatform,WaylandWindowDecorations,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder
 --enable-webrtc-pipewire-capturer
 EOF
 }
