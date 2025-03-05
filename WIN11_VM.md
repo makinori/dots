@@ -83,6 +83,8 @@ Now you can use the following in libvirt
 /dev/input/by-id/uinput-persist-mouse
 ```
 
+> **⚠ Note:** there's a bug where the script can leak gigabytes of memory
+
 ## Congrats
 
 Now you can chug jug Fortnite gamer on Linux
