@@ -8,18 +8,28 @@
     makepkg -si
     ```
 
--   firefox with vertical tabs and more
+-   faster firefox with vertical tabs
+
+    -   install `yay -S hellfire-browser-bin`
 
     <!-- -   install mercury browser<br />
         `yay -S mercury-browser-avx2-bin` -->
 
     -   install [sideberry](https://addons.mozilla.org/en-US/firefox/addon/sidebery/) extension
-    -   css hack [to hide native tabs](<https://github.com/mbnuqw/sidebery/wiki/Firefox-Styles-Snippets-(via-userChrome.css)#completely-hide-native-tabs-strip>)
-    -   also add `#sidebar-header { display: none; }`
-    -   some custom favicon too, entire file here: [`firefox-userChrome.css`](https://github.com/makinori/dots/blob/main/other/firefox-userChrome.css)
+
+    -   update settings in `about:config`<br />
+        `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`<br />
+        `xpinstall.signatures.required` to `false`
+
+    -   find profile dir in `about:profiles` and<br />
+        `git clone https://github.com/MrOtherGuy/firefox-csshacks.git chrome`
+
+    -   write [`userChrome.css`](https://github.com/makinori/dots/blob/main/other/firefox-userChrome.css)
 
     -   install [`minimalist-dracula-darker.xpi`](https://github.com/makinori/dots/blob/main/other/minimalist-dracula-darker.xpi) theme<br />
         (modified from [MinimalistFox](https://github.com/canbeardig/MinimalistFox))
+
+    -   install [makinori/new-tab](https://github.com/makinori/new-tab)
 
 -   make emojis work by running<br />
     `yay -S noto-fonts-emoji noto-color-emoji-fontconfig`
