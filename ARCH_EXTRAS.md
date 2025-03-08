@@ -31,6 +31,8 @@
 
     -   install [makinori/new-tab](https://github.com/makinori/new-tab)
 
+    -   install [EltonChou/TwitterMediaHarvest](https://github.com/EltonChou/TwitterMediaHarvest)
+
 -   make emojis work by running<br />
     `yay -S noto-fonts-emoji noto-color-emoji-fontconfig`
 
