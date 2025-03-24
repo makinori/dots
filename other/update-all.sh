@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export MAKEFLAGS="-j32"
+export PKGEXT=".pkg.tar" # avoid compression
 
 ignore=()
 
@@ -15,7 +16,7 @@ done
 
 sudo pacman -Syu $ignore_args
 
-if [[ "$1" != "--noaur" ]]; then
+if [[ "$1" != "--pacman" ]]; then
 	# yay -Syu --noconfirm $ignore_args
 	yay -Syu $ignore_args
 fi
