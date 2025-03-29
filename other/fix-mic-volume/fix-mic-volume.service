@@ -1,0 +1,13 @@
+[Unit]
+Description=Fix Mic Volume
+After=pipewire-pulse.service
+
+[Service]
+# ExecStartPre=/bin/sleep 2
+ExecStart={{.installPath}}
+Type=simple
+# treat as a lowest priority program
+Nice=19
+
+[Install]
+WantedBy=default.target

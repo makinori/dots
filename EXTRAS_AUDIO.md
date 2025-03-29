@@ -4,35 +4,15 @@ Everything here has been tested with PipeWire
 
 ## Force microphone to fixed volume
 
-Uses wireplumber and systemd
+Uses Pulse library in Go, please use with PipeWire
 
--   ```bash
-    wget https://raw.githubusercontent.com/makinori/dots/main/other/fix-mic-volume.lua
-    chmod +x fix-mic-volume.lua
-    ```
+-   git clone this repo
 
--   update variables at the top of the lua file
+-   check and modify `./other/fix-mic-volume`
 
--   `vim ~/.config/systemd/user/fix-mic-volume.service`
+-   run `./install.sh`
 
-    ```service
-    [Unit]
-    Description=Fix Mic Volume
-    After=pipewire.service
-
-    [Service]
-    # ExecStartPre=/bin/sleep 2
-    ExecStart=/home/maki/fix-mic-volume.lua
-    Type=simple
-    # treat as a lowest priority program
-    Nice=19
-
-    [Install]
-    WantedBy=default.target
-    ```
-
--   `systemctl enable --now --user fix-mic-volume.service`
--   `systemctl status --user fix-mic-volume.service` make sure its not erroring
+-   `systemctl status --user fix-mic-volume.service`
 
 ## Virtual audio cable
 
