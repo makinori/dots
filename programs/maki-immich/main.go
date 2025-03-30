@@ -120,7 +120,7 @@ func selectAlbum() (string, string, error) {
 	return albumId, "", nil
 }
 
-func stripExif(data []byte) ([]byte, error) {
+func stripExifDate(data []byte) ([]byte, error) {
 	// find more using: exiftool -G -a -s -time:all image.jpg
 
 	toStrip := []string{
@@ -302,7 +302,7 @@ func uploadFile(pathToFile string, albumId string) error {
 	// try to strip exif
 	// ignore error
 	{
-		strippedData, err := stripExif(fileData)
+		strippedData, err := stripExifDate(fileData)
 		if err == nil {
 			fileData = strippedData
 		}
