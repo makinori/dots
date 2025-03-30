@@ -8,7 +8,7 @@ Uses Pulse library in Go, please use with PipeWire
 
 -   git clone this repo
 
--   check and modify `./other/fix-mic-volume`
+-   check and modify `./programs/fix-mic-volume`
 
 -   run `./install.sh`
 
