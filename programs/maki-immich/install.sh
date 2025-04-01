@@ -12,7 +12,7 @@ echo "sample config for nautilus:"
 echo ""
 echo "~/.local/share/actions-for-nautilus/config.json"
 echo ""
-echo "{
+echo '{
 	"debug": false,
 	"actions": [
 		{
@@ -24,5 +24,5 @@ echo "{
 			"filetypes": ["file"]
 		}
 	]
-}"
+}'
 
