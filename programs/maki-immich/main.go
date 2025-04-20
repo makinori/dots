@@ -380,17 +380,27 @@ func main() {
 	var completed []string
 	var failed []string
 
+	// files get uploaded so quickly, they end up going out of order
+	// immich might only save up to every second?
+	waitBeforeUpload := false
+
 	for _, filePath := range filePaths {
+		if waitBeforeUpload {
+			time.Sleep(time.Millisecond * 500)
+		}
+
 		err := uploadFile(filePath, albumId)
 		filename := path.Base(filePath)
 
 		if err == ErrDuplicate {
 			completed = append(completed, filename+" (duplicate)")
+			waitBeforeUpload = false
 		} else if err == nil {
 			completed = append(completed, filename)
+			waitBeforeUpload = true
 		} else {
 			failed = append(failed, filename)
-
+			waitBeforeUpload = false
 		}
 	}
 
