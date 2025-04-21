@@ -31,11 +31,10 @@ var (
 )
 
 type Album struct {
-	AlbumName                  string `json:"albumName"`
-	Id                         string `json:"id"`
-	AssetCount                 int    `json:"assetCount"`
-	LastModifiedAssetTimestamp string `json:"lastModifiedAssetTimestamp"`
-	LastModifiedAsset          time.Time
+	AlbumName         string    `json:"albumName"`
+	Id                string    `json:"id"`
+	AssetCount        int       `json:"assetCount"`
+	LastModifiedAsset time.Time `json:"lastModifiedAssetTimestamp"`
 }
 
 type Action struct {
@@ -70,19 +69,8 @@ func getAlbums() ([]Album, error) {
 		return nil, err
 	}
 
-	for i, album := range albums {
-		albums[i].LastModifiedAsset, err = time.Parse(
-			time.RFC3339, album.LastModifiedAssetTimestamp,
-		)
-
-		if err != nil {
-			return nil, err
-		}
-	}
-
 	slices.SortFunc(albums, func(a, b Album) int {
 		return b.LastModifiedAsset.Compare(a.LastModifiedAsset)
-
 	})
 
 	return albums, nil
@@ -119,6 +107,9 @@ func selectAlbum() (string, string, error) {
 
 	return albumId, "", nil
 }
+
+/*
+// doesnt handle all cases. this isn't very reliable
 
 func stripExifDate(data []byte) ([]byte, error) {
 	// find more using: exiftool -G -a -s -time:all image.jpg
@@ -163,6 +154,7 @@ func stripExifDate(data []byte) ([]byte, error) {
 
 	return output.Bytes(), nil
 }
+*/
 
 func getRandom() (string, error) {
 	bytes := make([]byte, 8)
@@ -173,9 +165,7 @@ func getRandom() (string, error) {
 	return hex.EncodeToString(bytes), nil
 }
 
-func uploadAsset(data []byte, filename string) (string, error) {
-
-	dateStr := time.Now().Format(time.RFC3339)
+func uploadAsset(data []byte, filename string, dateStr string) (string, error) {
 
 	mpBuf := new(bytes.Buffer)
 	mp := multipart.NewWriter(mpBuf)
@@ -194,6 +184,8 @@ func uploadAsset(data []byte, filename string) (string, error) {
 
 	mp.WriteField("deviceAssetId", deviceAssetId)
 	mp.WriteField("deviceId", "GO") // WEB
+
+	// doesn't actually set the date
 	mp.WriteField("fileCreatedAt", dateStr)
 	mp.WriteField("fileModifiedAt", dateStr)
 
@@ -231,6 +223,43 @@ func uploadAsset(data []byte, filename string) (string, error) {
 	}
 
 	return action.Id, nil
+}
+
+func updateAssetDate(assetId string, dateStr string) error {
+	data, err := json.Marshal(map[string]any{
+		"ids":              []string{assetId},
+		"dateTimeOriginal": dateStr,
+	})
+
+	if err != nil {
+		return err
+	}
+
+	buffer := new(bytes.Buffer)
+	buffer.Write(data)
+
+	req, err := http.NewRequest(
+		"PUT", IMMICH_SERVER+"/api/assets", buffer,
+	)
+
+	if err != nil {
+		return err
+	}
+
+	req.Header.Add("x-api-key", IMMICH_API_KEY)
+	req.Header.Add("Content-Type", "application/json")
+
+	res, err := new(http.Client).Do(req)
+	if err != nil {
+		return err
+	}
+	defer res.Body.Close()
+
+	if res.StatusCode != 204 {
+		return fmt.Errorf("status code: %d", res.StatusCode)
+	}
+
+	return nil
 }
 
 func addToAlbum(albumId string, assetId string) error {
@@ -301,19 +330,27 @@ func uploadFile(pathToFile string, albumId string) error {
 
 	// try to strip exif
 	// ignore error
-	{
-		strippedData, err := stripExifDate(fileData)
-		if err == nil {
-			fileData = strippedData
-		}
-	}
+	// {
+	// 	strippedData, err := stripExifDate(fileData)
+	// 	if err == nil {
+	// 		fileData = strippedData
+	// 	}
+	// }
+
+	fileDateStr := time.Now().Format(time.RFC3339Nano)
 
 	// upload file which also handles deduplication
 
-	assetId, err := uploadAsset(fileData, filepath.Base(pathToFile))
+	assetId, err := uploadAsset(fileData, filepath.Base(pathToFile), fileDateStr)
 	if err != nil {
 		return err
 	}
+
+	// update file date. ignore error i suppose
+
+	updateAssetDate(assetId, fileDateStr)
+
+	// add to album
 
 	err = addToAlbum(albumId, assetId)
 
@@ -380,27 +417,16 @@ func main() {
 	var completed []string
 	var failed []string
 
-	// files get uploaded so quickly, they end up going out of order
-	// immich might only save up to every second?
-	waitBeforeUpload := false
-
 	for _, filePath := range filePaths {
-		if waitBeforeUpload {
-			time.Sleep(time.Millisecond * 500)
-		}
-
 		err := uploadFile(filePath, albumId)
 		filename := path.Base(filePath)
 
 		if err == ErrDuplicate {
 			completed = append(completed, filename+" (duplicate)")
-			waitBeforeUpload = false
 		} else if err == nil {
 			completed = append(completed, filename)
-			waitBeforeUpload = true
 		} else {
 			failed = append(failed, filename)
-			waitBeforeUpload = false
 		}
 	}
 
