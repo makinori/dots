@@ -54,6 +54,22 @@
     ./other/wayland-chromium-flags.sh
     ```
 
+-   vscodium use vscode extensions
+
+    `~/.config/VSCodium/product.json`
+
+    ```json
+    {
+    	"extensionsGallery": {
+    		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+    		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
+    		"itemUrl": "https://marketplace.visualstudio.com/items",
+    		"controlUrl": "",
+    		"recommendationsUrl": ""
+    	}
+    }
+    ```
+
 ## Not really using these
 
 -   when using grub2win (try to avoid it i guess)
