@@ -346,17 +346,18 @@ func uploadFile(pathToFile string, albumId string) error {
 		return err
 	}
 
-	// update file date. ignore error i suppose
-
-	updateAssetDate(assetId, fileDateStr)
-
 	// add to album
 
 	err = addToAlbum(albumId, assetId)
-
 	if err != nil {
 		return err
 	}
+
+	// if there's a duplicate error, it will have returned early
+	// update file date now so we dont push duplicates up
+
+	// ignore error cause too insignificant
+	updateAssetDate(assetId, fileDateStr)
 
 	return nil
 }
