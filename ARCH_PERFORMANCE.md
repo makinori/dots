@@ -52,3 +52,11 @@
         w /sys/kernel/debug/sched/migration_cost_ns - - - - 500000
         w /sys/kernel/debug/sched/nr_migrate - - - - 8
         ```
+
+-   improve startup time
+
+    check using `systemd-analyze critical-chain`
+
+    -   `ldconfig.service` may take a while if lots of packages are installed
+
+        disable with `sudo systemctl mask ldconfig.service`
