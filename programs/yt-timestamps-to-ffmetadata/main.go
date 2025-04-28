@@ -14,7 +14,7 @@ type Chapter struct {
 	Title   string
 }
 
-var timestampRegExp = regexp.MustCompile("^([0-9]+):([0-9]+) (.+)$")
+var timestampRegExp = regexp.MustCompile("^(?:([0-9]+):)?([0-9]+):([0-9]+) (.+)$")
 
 func parseTimestamps(filePath string) ([]Chapter, error) {
 	bytes, err := os.ReadFile(filePath)
@@ -37,11 +37,13 @@ func parseTimestamps(filePath string) ([]Chapter, error) {
 			return []Chapter{}, errors.New("failed to find matches for: " + line)
 		}
 
-		minutes, _ := strconv.Atoi(matches[1])
-		seconds, _ := strconv.Atoi(matches[2])
-		seconds += minutes * 60
+		hours, _ := strconv.Atoi(matches[1])
+		minutes, _ := strconv.Atoi(matches[2])
+		seconds, _ := strconv.Atoi(matches[3])
 
-		title := strings.TrimSpace(matches[3])
+		seconds += (hours * 60 * 60) + (minutes * 60)
+
+		title := strings.TrimSpace(matches[4])
 
 		// remove dash if it starts with a dash
 		if strings.HasPrefix(title, "-") {
