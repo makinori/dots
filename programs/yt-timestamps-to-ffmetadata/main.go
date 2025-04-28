@@ -43,6 +43,11 @@ func parseTimestamps(filePath string) ([]Chapter, error) {
 
 		title := strings.TrimSpace(matches[3])
 
+		// remove dash if it starts with a dash
+		if strings.HasPrefix(title, "-") {
+			title = strings.TrimSpace(title[1:])
+		}
+
 		chapters = append(chapters, Chapter{
 			Seconds: seconds,
 			Title:   title,
@@ -85,7 +90,7 @@ usage: <txt in> <optional title> > metadata.txt
 
 txt should be in format:
 0:00 first song
-1:24 second song
+1:24 - can have dashes
 ...
 
 then run:
