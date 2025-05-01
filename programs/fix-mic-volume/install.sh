@@ -16,6 +16,7 @@ cp fix-mic-volume.service $SERVICE_PATH
 sed -i "s#{{.installPath}}#"$INSTALL_PATH"#g" $SERVICE_PATH
 
 systemctl --user daemon-reload
-systemctl --user enable --now fix-mic-volume.service
+systemctl --user enable fix-mic-volume.service
+systemctl --user restart --now fix-mic-volume.service
 
 systemctl --user status fix-mic-volume.service
