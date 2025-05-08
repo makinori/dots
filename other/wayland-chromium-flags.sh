@@ -28,4 +28,5 @@ write_config electron31
 write_config electron32
 write_config electron33
 write_config electron34
+write_config electron35
 write_config electron
