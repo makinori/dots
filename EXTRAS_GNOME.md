@@ -6,13 +6,15 @@
 
 -   update keybinds in **Settings > Keyboard > View and Customize Shortcuts**
 
+    > using <kbd>alt</kbd> here cause ended up getting bad rsi with <kbd>super</kbd>
+
     -   under `Naviation`
 
-        -   `Move window one workspace to the left` to **Shift + Super + Q**
-        -   `Move window one workspace to the right` to **Shift + Super + E**
+        -   `Move window one workspace to the left` to **Shift + Alt + Q**
+        -   `Move window one workspace to the right` to **Shift + Alt + E**
         -   `Switch applications` to **Disabled**
-        -   `Switch to workspace on the left` to **Super + Q**
-        -   `Switch to workspace on the right` to **Super + E**
+        -   `Switch to workspace on the left` to **Alt + Q**
+        -   `Switch to workspace on the right` to **Alt + E**
         -   ❗ `Switch windows` to **Alt + Tab**
 
     -   under `System`
@@ -25,6 +27,27 @@
         -   `Playerctl next` with `playerctl next` to **Audio next**
         -   `Playerctl play/pause` with `playerctl play-pause` to **Audio play**
         -   `Playerctl previous` with `playerctl previous` to **Audio previous**
+
+-   disable alt menu
+
+    -   gtk
+
+        ```ini
+        [Settings]
+        gtk-enable-mnemonics=0
+        gtk-auto-mnemonics=0
+        ```
+
+        `~/.config/gtk-2.0/settings.ini`</br>
+        `~/.config/gtk-3.0/settings.ini`</br>
+        `~/.config/gtk-4.0/settings.ini`</br>
+
+    -   vscode
+
+        ```json
+        "window.titleBarStyle": "custom",
+        "window.customMenuBarAltFocus": false
+        ```
 
 -   using tweaks, disable **Middle Click Paste** in **Keyboard & Mouse**
 
