@@ -68,7 +68,7 @@
 
 -   please dont theme gnome https://stopthemingmy.app
 -   but do use [Papirus Icon Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
--   change font to [SN Pro](https://supernotes.app/open-source/sn-pro/) `yay -S ots-sn-pro`
+-   change font to [Maki Libertinus Mono](https://github.com/makinori/maki-libertinus-mono) or [SN Pro](https://supernotes.app/open-source/sn-pro/) `yay -S otf-sn-pro`
 
 ## Nautilus
 
