@@ -13,7 +13,7 @@ import (
 
 const (
 	MIC_NAME      = "Yeti Nano"
-	MIC_VOLUME    = 0.65
+	MIC_VOLUME    = 0.7
 	INTERVAL_TIME = 500 // ms
 )
 
