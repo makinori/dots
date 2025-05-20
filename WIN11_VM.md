@@ -61,29 +61,28 @@ systemctl show system.slice | grep AllowedCPUs=
 
 When using `evdev` and `grabToggle="ctrl-ctrl"`, mouse/keyboard input will be lost when they're disconnected. This script proxies them so that they're always available.
 
-Original: https://github.com/aiberia/persistent-evdev
+Install `yay -S proxydev` from https://gitlab.com/b1gbear/proxydev
 
-Find modfied files in `win11` folder
+`/etc/proxydev/config.toml`
+
+```toml
+[[ device ]]
+device_type = "keyboard"
+vendor_id = 0xca04
+product_id = 0xdb62
+
+[[ device ]]
+device_type = "mouse"
+vendor_id = 0x3554
+product_id = 0xf58a
+```
 
 ```bash
-sudo pacman -Sy python-evdev python-pyudev
-sudo ./install.sh
-sudo systemctl restart systemd-udevd # apply rules so we dont get double input
-# test first, then close
-sudo /opt/persistent-evdev/persistent-evdev.py /opt/persistent-evdev/config.json
-# enable and start service
-sudo systemctl enable --now persistent-evdev.service
-sudo systemctl status persistent-evdev.service
+sudo systemctl enable --now proxydev
+sudo systemctl status proxydev
 ```
 
-Now you can use the following in libvirt
-
-```
-/dev/input/by-id/uinput-persist-keyboard
-/dev/input/by-id/uinput-persist-mouse
-```
-
-> **⚠ Note:** there's a bug where the script can leak gigabytes of memory
+Now you can use `/dev/input/by-id/proxydev` in libvirt
 
 ## Congrats
 

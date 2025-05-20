@@ -53,11 +53,11 @@
 	</pm>
 	<devices>
 		<emulator>/usr/bin/qemu-system-x86_64</emulator>
-		<disk type="file" device="disk">
+		<disk type="block" device="disk">
 			<driver name="qemu" type="raw" cache="none" io="native"/>
-			<source file="/var/lib/libvirt/images2/win11.raw"/>
-			<target dev="sda" bus="sata"/>
-			<address type="drive" controller="0" bus="0" target="0" unit="0"/>
+			<source dev="/dev/nvme1n1"/>
+			<target dev="vda" bus="virtio"/>
+			<address type="pci" domain="0x0000" bus="0x09" slot="0x00" function="0x0"/>
 		</disk>
 		<controller type="usb" index="0" model="qemu-xhci" ports="15">
 			<address type="pci" domain="0x0000" bus="0x02" slot="0x00" function="0x0"/>
@@ -148,6 +148,9 @@
 		<controller type="virtio-serial" index="0">
 			<address type="pci" domain="0x0000" bus="0x03" slot="0x00" function="0x0"/>
 		</controller>
+		<controller type="scsi" index="0" model="lsilogic">
+			<address type="pci" domain="0x0000" bus="0x10" slot="0x01" function="0x0"/>
+		</controller>
 		<filesystem type="mount" accessmode="passthrough">
 			<driver type="virtiofs"/>
 			<source dir="/home/maki"/>
@@ -173,10 +176,7 @@
 			<address type="virtio-serial" controller="0" bus="0" port="1"/>
 		</channel>
 		<input type="evdev">
-			<source dev="/dev/input/by-id/uinput-persist-mouse"/>
-		</input>
-		<input type="evdev">
-			<source dev="/dev/input/by-id/uinput-persist-keyboard" grab="all" grabToggle="ctrl-ctrl" repeat="on"/>
+			<source dev="/dev/input/by-id/proxydev" grab="all" grabToggle="ctrl-ctrl" repeat="on"/>
 		</input>
 		<input type="mouse" bus="ps2"/>
 		<input type="keyboard" bus="ps2"/>

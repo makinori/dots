@@ -1,7 +1,0 @@
-{
-	"cache": "/opt/persistent-evdev",
-	"devices": {
-		"persist-mouse": "/dev/input/by-id/usb-Compx_VXE_NordicMouse_1K_Dongle-if02-event-mouse",
-		"persist-keyboard": "/dev/input/by-id/usb-CannonKeys_DB60_Hotswap-event-kbd"
-	}
-}
