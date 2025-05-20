@@ -6,6 +6,10 @@ Really recommend looking through: https://wiki.archlinux.org/title/PCI_passthrou
 
 Using an AMD Ryzen 7950x
 
+Recommend using `raw` or an entire disk with `virtio` for best disk performance
+
+Also recommend installing https://atlasos.net
+
 ## Files
 
 Current libvirt xml here: https://github.com/makinori/dots/blob/main/win11/win11.xml
@@ -57,7 +61,7 @@ systemctl show system.slice | grep AllowedCPUs=
 
 ```
 
-## Persistent Evdev
+## Proxydev
 
 When using `evdev` and `grabToggle="ctrl-ctrl"`, mouse/keyboard input will be lost when they're disconnected. This script proxies them so that they're always available.
 
