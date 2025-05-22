@@ -320,8 +320,10 @@ func uploadFile(pathToFile string, albumId string) error {
 	// if there's a duplicate error, it will have returned early
 	// update file date now so we dont push duplicates up
 
-	// ignore error cause too insignificant
-	updateAssetDate(assetId, fileDateStr)
+	// ignore error but do retry a few times just incase
+	retryNoFailNoOutput(3, time.Millisecond*500, func() error {
+		return updateAssetDate(assetId, fileDateStr)
+	})
 
 	return nil
 }
