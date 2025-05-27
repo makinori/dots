@@ -51,7 +51,7 @@
 
 -   using tweaks, disable **Middle Click Paste** in **Keyboard & Mouse**
 
--   if using 800 dpi for mouse, half sensitivity and disable mouse acceleration<br>
+-   if using 1600 dpi for mouse, half sensitivity and disable mouse acceleration<br>
     `gsettings set org.gnome.desktop.peripherals.mouse speed -0.5`<br>
     `gsettings set org.gnome.desktop.peripherals.mouse accel-profile flat`
 
