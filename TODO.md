@@ -2,7 +2,6 @@
 -   systemd-resolved
 -   linux-tkg
 -   laptop stuff
--   https://fy.blackhats.net.au/blog/2024-08-13-linux-filesystems/
 -   https://gist.github.com/AnatomicJC/d51072e09f4f17c05042f639e7b1f4c6
 -   EDITOR var for codium
 -   rsync -axHAWXS --numeric-ids --info=progress2 https://superuser.com/a/1185401

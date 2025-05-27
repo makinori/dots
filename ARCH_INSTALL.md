@@ -22,17 +22,12 @@ this guide will only work with uefi. we'll set up partitions first
 
 -   choose which root fs you want to use
 
-    <details>
-    <summary>ext4 (plain)</summary>
+    would definitely recommend xfs, however it can't be shrinked
 
-    -   mkfs ext4 on the other, with label<br>
-        `mkfs.ext4 /dev/sda2`<br>
-        `e2label /dev/sda2 MAKI_ARCH`<br>
-
-    </details>
+    https://fy.blackhats.net.au/blog/2024-08-13-linux-filesystems/
 
     <details>
-    <summary>ext4 (with encryption)</summary>
+    <summary>with encryption</summary>
 
     -   prepare luks on the other, with label<br>
         `cryptsetup luksFormat /dev/sda2`<br>
@@ -41,9 +36,25 @@ this guide will only work with uefi. we'll set up partitions first
     -   mount luks partition<br>
         `cryptsetup open /dev/disk/by-label/MAKI_ARCH_CRYPT root`
 
-    -   mkfs ext4, also with label<br>
-        `mkfs.ext4 /dev/mapper/root`<br>
-        `e2label /dev/mapper/root MAKI_ARCH`<br>
+    -   use `/dev/mapper/root` instead of `/dev/sda2`
+
+    </details>
+
+    <details>
+    <summary>xfs</summary>
+
+    -   mkfs xfs on the other and label<br>
+        `mkfs.xfs /dev/sda2`<br>
+        `xfs_admin -L MAKI_ARCH /dev/sda2`<br>
+
+    </details>
+
+    <details>
+    <summary>ext4</summary>
+
+    -   mkfs ext4 on the other and label<br>
+        `mkfs.ext4 /dev/sda2`<br>
+        `e2label /dev/sda2 MAKI_ARCH`<br>
 
     </details>
 
@@ -108,6 +119,7 @@ now we've setup partitions, we'll pacstrap install arch linux and install a boot
 
 -   install the base system<br>
     `pacstrap /mnt base base-devel linux linux-firmware linux-headers dhcpcd nano`
+    _also install xfsprogs if using xfs_
 
 -   chroot into the new system<br>
     `arch-chroot /mnt`
