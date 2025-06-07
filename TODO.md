@@ -7,3 +7,4 @@
 -   rsync -axHAWXS --numeric-ids --info=progress2 https://superuser.com/a/1185401
 -   lvm2 guide. add [...block, lvm2] to mkinitcpio
 -   mount -o remount,size=1G /run/archiso/cowspace
+-   `.config/pipewire/pipewire.conf.d/fix-fw13-crackling.conf`
