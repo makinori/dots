@@ -91,6 +91,9 @@
         check if working using `resolvectl`<br>
         https://wiki.archlinux.org/title/Systemd-resolved
 
+-   maki immich
+    https://github.com/makinori/maki-immich
+
 ## Not really using these
 
 -   when using grub2win (try to avoid it i guess)
