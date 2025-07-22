@@ -8,26 +8,32 @@
     makepkg -si
     ```
 
--   faster firefox with vertical tabs
+<!-- -   faster firefox with vertical tabs -->
 
-    -   install `yay -S hellfire-browser-bin`
+-   firefox
+
+    <!-- -   install `yay -S hellfire-browser-bin` -->
 
     <!-- -   install mercury browser<br />
         `yay -S mercury-browser-avx2-bin` -->
 
-    -   install [sideberry](https://addons.mozilla.org/en-US/firefox/addon/sidebery/) extension
+    -   install `yay -S firefox-developer-edition`
+
+    <!-- -   install [sideberry](https://addons.mozilla.org/en-US/firefox/addon/sidebery/) extension -->
+
+    -   use native vertical tabs
 
     -   update settings in `about:config`<br />
-        `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`<br />
+        <!-- `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`<br /> -->
         `xpinstall.signatures.required` to `false`
 
-    -   find profile dir in `about:profiles` and<br />
-        `git clone https://github.com/MrOtherGuy/firefox-csshacks.git chrome`
+    <!-- -   find profile dir in `about:profiles` and<br />
+        `git clone https://github.com/MrOtherGuy/firefox-csshacks.git chrome` -->
 
-    -   write [`userChrome.css`](https://github.com/makinori/dots/blob/main/other/firefox-userChrome.css)
+    <!-- -   write [`userChrome.css`](https://github.com/makinori/dots/blob/main/other/firefox-userChrome.css) -->
 
-    -   install [`minimalist-dracula-darker.xpi`](https://github.com/makinori/dots/blob/main/other/minimalist-dracula-darker.xpi) theme<br />
-        (modified from [MinimalistFox](https://github.com/canbeardig/MinimalistFox))
+    <!-- -   install [`minimalist-dracula-darker.xpi`](https://github.com/makinori/dots/blob/main/other/minimalist-dracula-darker.xpi) theme<br />
+        (modified from [MinimalistFox](https://github.com/canbeardig/MinimalistFox)) -->
 
     -   install [makinori/new-tab](https://github.com/makinori/new-tab)
 
