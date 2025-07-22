@@ -14,7 +14,7 @@ artwork.save_to_music_folders 0
 artwork.save_to_music_folders_relative_path cover.jpg
 cli_add_playlist_name Default
 deadbeef_version devel
-discord_presence.enable 1
+discord_presence.enable 0
 discord_presence.end_timestamp 1
 discord_presence.hide_on_pause 1
 discord_presence.icon_script %artist% '-' %album%

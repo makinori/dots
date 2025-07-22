@@ -48,5 +48,5 @@ WantedBy=default.target
 
 # Setup DeaDBeeF
 
--   `yay -S deadbeef-git deadbeef-mpris2-plugin deadbeef-plugin-fb-gtk3-git deadbeef-plugin-spectrogram-gtk3-git deadbeef-plugin-discord-git`
+-   `yay -S deadbeef-git deadbeef-mpris2-plugin deadbeef-plugin-fb-gtk3-git deadbeef-plugin-spectrogram-gtk3-git`
 -   [`.config/deadbeef/config`](https://raw.githubusercontent.com/makinori/dots/main/.config/deadbeef/config)
