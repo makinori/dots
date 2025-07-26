@@ -76,29 +76,10 @@
     }
     ```
 
--   dns over https with adblocking
+-   dns over https with adblocking<br>
+    use my [doh-hole](https://github.com/makinori/doh-hole) and `just install`
 
-    -   use maki [doh-hole](https://github.com/makinori/doh-hole) `just install`
-        -   https://on.quad9.net should report yes
-        -   any from [StevenBlack/hosts](https://raw.githubusercontent.com/StevenBlack/hosts/refs/heads/master/hosts) should be blocked
-    -   if using tailscale, might wanna use systemd-resolved<br>
-        `/etc/systemd/resolved.conf.d/dns_servers.conf`
-        ```conf
-        [Resolve]
-        DNS=127.0.0.1
-        Domains=~.
-        FallbackDNS=
-        ```
-        ```bash
-        sudo rm -f /etc/resolv.conf
-        sudo ln -sf ../run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
-        sudo systemctl enable --now systemd-resolved.service
-        ```
-        check if working using `resolvectl`<br>
-        https://wiki.archlinux.org/title/Systemd-resolved
-
--   maki immich
-    https://github.com/makinori/maki-immich
+-   upload images using [maki immich](https://github.com/makinori/maki-immich)
 
 ## Not really using these
 
