@@ -8,3 +8,5 @@
 -   lvm2 guide. add [...block, lvm2] to mkinitcpio
 -   mount -o remount,size=1G /run/archiso/cowspace
 -   `.config/pipewire/pipewire.conf.d/fix-fw13-crackling.conf`
+-   fw3 amdgpu crashing `options amdgpu.dcdebugmask=0x12`
+    DC_DEBUG_MASK https://github.com/torvalds/linux/blob/master/drivers/gpu/drm/amd/include/amd_shared.h
