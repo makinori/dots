@@ -96,9 +96,12 @@ func loop(state *State) {
 	}
 
 	err := updateMicVolume(state)
-
 	if err == nil {
 		return
+	}
+
+	if err == ErrFailedToFindMic {
+		return // dont want to print an error over and over
 	}
 
 	log.Println(err)
