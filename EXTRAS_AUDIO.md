@@ -51,6 +51,8 @@ WantedBy=default.target
 -   `yay -S deadbeef-git deadbeef-mpris2-plugin deadbeef-plugin-fb-gtk3-git deadbeef-plugin-spectrogram-gtk3-git`
 -   [`.config/deadbeef`](https://github.com/makinori/dots/tree/main/.config/deadbeef)
 
+<!-- deadbeef-plugin-waveform-gtk3-git -->
+
 # Setup fooyin
 
 TODO: make spectrum and spectogram plugin and add album art support to directory browser
