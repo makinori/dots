@@ -1,5 +1,5 @@
 [Unit]
-Description=Fix Mic Volume
+Description=Maki Audio Helper
 After=pipewire-pulse.service
 
 [Service]

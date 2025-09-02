@@ -1,4 +1,4 @@
-module github.com/makinori/dots/fix-mic-volume
+module github.com/makinori/dots/maki-audio-helper
 
 go 1.24.1
 
