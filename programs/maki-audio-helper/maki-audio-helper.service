@@ -8,6 +8,8 @@ ExecStart={{.installPath}}
 Type=simple
 # treat as a lowest priority program
 Nice=19
+Restart=always
+RestartSec=1s
 
 [Install]
 WantedBy=default.target
