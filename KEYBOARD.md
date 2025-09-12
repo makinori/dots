@@ -6,7 +6,7 @@ TODO: explain layout i guess
 
 ## QMK firmware
 
--   Clone `yay -S qmk` and `qmk setup`
+-   Get `yay -S qmk` and `qmk setup`
 -   Link `ln -sr ~/git/dots-maki/keyboard/maki ~/qmk_firmware/keyboards/cannonkeys/db60/keymaps/maki`
 -   Set `qmk config user.keymap=maki` and</br>
     `qmk config user.keyboard=cannonkeys/db60/hotswap`
