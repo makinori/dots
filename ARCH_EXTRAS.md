@@ -81,6 +81,10 @@
 
 -   upload images using [maki immich](https://github.com/makinori/maki-immich)
 
+-   gimp plugins `yay -S gimp-plugin-resynthesizer-git`
+
+    https://github.com/bootchk/resynthesizer/wiki/Quick-user's-guide-to-the-Resynthesizer-plugins-for-GIMP
+
 ## Not really using these
 
 -   when using grub2win (try to avoid it i guess)
