@@ -1,8 +1,3 @@
-// keyboards/cannonkeys/db60/keymaps/maki
-// qmk config user.keyboard=cannonkeys/db60/hotswap
-// qmk config user.keymap=maki
-// qmk compile --compiledb
- 
 #include <stdint.h>
 #include "keycodes.h"
 #include QMK_KEYBOARD_H

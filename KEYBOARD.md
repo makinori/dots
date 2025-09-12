@@ -6,10 +6,12 @@ TODO: explain layout i guess
 
 ## QMK firmware
 
--   Clone [QMK](https://docs.qmk.fm/) and setup
--   Save [`keymap.c`](https://raw.githubusercontent.com/makinori/dots/main/keyboard/keymap.c) to `keyboards/cannonkeys/db60/keymaps/maki/keymap.c`
-    -   Was [`keymap-socd.c`](https://raw.githubusercontent.com/makinori/dots/main/keyboard/keymap-socd.c) but not using
--   Compile and flash
+-   Clone `yay -S qmk` and `qmk setup`
+-   Link `ln -sr ~/git/dots-maki/keyboard/maki ~/qmk_firmware/keyboards/cannonkeys/db60/keymaps/maki`
+-   Set `qmk config user.keymap=maki` and</br>
+    `qmk config user.keyboard=cannonkeys/db60/hotswap`
+-   For compile_commands.json `qmk compile --compiledb`
+-   Flash `qmk flash` and `CTRL+FN+\`
 
 ## Framework 13 with keyd
 
