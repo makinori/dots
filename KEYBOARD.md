@@ -7,9 +7,8 @@ TODO: explain layout i guess
 ## QMK firmware
 
 -   Get `yay -S qmk` and `qmk setup`
--   Link `ln -sr ~/git/dots-maki/keyboard/maki ~/qmk_firmware/keyboards/cannonkeys/db60/keymaps/maki`
--   Set `qmk config user.keymap=maki` and</br>
-    `qmk config user.keyboard=cannonkeys/db60/hotswap`
+-   Link `ln -s ~/git/dots-maki/keyboard/maki ~/qmk_firmware/keyboards/cannonkeys/db60/keymaps/maki`
+-   Set `qmk config user.keyboard=cannonkeys/db60/hotswap; qmk config user.keymap=maki`
 -   For compile_commands.json `qmk compile --compiledb`
 -   Flash `qmk flash` and `CTRL+FN+\`
 
