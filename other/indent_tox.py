@@ -1,5 +1,8 @@
 import weechat
 
+# to use with the only maintained tox plugin:
+# https://git.plastiras.org/emdee/tox-weechat
+
 SCRIPT_NAME = "indent_tox"
 SCRIPT_AUTHOR = "maki"
 SCRIPT_VERSION = "0.1"
@@ -18,7 +21,7 @@ def indent_buffer(buffer_ptr):
 			weechat.buffer_set(buffer_ptr, "localvar_set_type", "server")
 			weechat.buffer_set(buffer_ptr, "short_name", "tox:" + name)
 
-def buffer_opened_cb(data, signal, signal_data):
+def buffer_opened(data, signal, signal_data):
 	indent_buffer(signal_data)
 	return weechat.WEECHAT_RC_OK
 
@@ -37,4 +40,4 @@ if weechat.register(
     ""
 ):
 	indent_current()
-	weechat.hook_signal("buffer_opened", "buffer_opened_cb", "")
+	weechat.hook_signal("buffer_opened", "buffer_opened", "")
