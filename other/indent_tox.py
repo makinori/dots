@@ -13,13 +13,15 @@ SCRIPT_DESC = "Indent Tox"
 
 def indent_buffer(buffer_ptr):
 	plugin = weechat.buffer_get_string(buffer_ptr, "plugin")
+	if plugin != "tox":
+		return
+
 	name = weechat.buffer_get_string(buffer_ptr, "name")
-	if plugin and plugin == "tox":
-		if name and "/" in name:
-			weechat.buffer_set(buffer_ptr, "localvar_set_type", "private")
-		else:
-			weechat.buffer_set(buffer_ptr, "localvar_set_type", "server")
-			weechat.buffer_set(buffer_ptr, "short_name", "tox:" + name)
+	if name and "/" in name:
+		weechat.buffer_set(buffer_ptr, "localvar_set_type", "private")
+	else:
+		weechat.buffer_set(buffer_ptr, "localvar_set_type", "server")
+		weechat.buffer_set(buffer_ptr, "short_name", "tox:" + name)
 
 def buffer_opened(data, signal, signal_data):
 	indent_buffer(signal_data)
@@ -29,10 +31,12 @@ def indent_current():
 	infolist = weechat.infolist_get("buffer", "", "")
 	if infolist == None:
 		return
+
 	while weechat.infolist_next(infolist):
 		buffer_ptr = weechat.infolist_pointer(infolist, "pointer")
 		if buffer_ptr == None:
 			return
+
 		indent_buffer(buffer_ptr)
 
 if weechat.register(
