@@ -22,17 +22,17 @@ const (
 	EASY_EFFECTS_ONLY_NAME = "Family 17h/19h/1ah HD Audio Controller"
 )
 
-type State struct {
-	client            *pulse.Client
-	lastDefaultSinkID string
-}
+var (
+	client *pulse.Client
+	// muteMic bool
+)
 
 func clamp(val float64, min float64, max float64) float64 {
 	return math.Max(min, math.Min(val, max))
 }
 
-func (state *State) fixMicVolume() error {
-	sources, err := state.client.ListSources()
+func fixMicVolume() error {
+	sources, err := client.ListSources()
 	if err != nil {
 		return errors.New("failed to get sources: " + err.Error())
 	}
@@ -52,8 +52,13 @@ func (state *State) fixMicVolume() error {
 		return nil
 	}
 
+	volume := MIC_VOLUME
+	// if muteMic {
+	// 	volume = 0
+	// }
+
 	volumeUint := uint32(
-		clamp(MIC_VOLUME, 0, 1) * float64(0xffff),
+		clamp(volume, 0, 1) * float64(0xffff),
 	)
 
 	channelVolumes := make([]uint32, len(foundSource.Channels()))
@@ -61,7 +66,7 @@ func (state *State) fixMicVolume() error {
 		channelVolumes[i] = volumeUint
 	}
 
-	state.client.RawRequest(&proto.SetSourceVolume{
+	client.RawRequest(&proto.SetSourceVolume{
 		SourceIndex:    foundSource.SourceIndex(),
 		ChannelVolumes: channelVolumes,
 	}, nil)
@@ -69,42 +74,78 @@ func (state *State) fixMicVolume() error {
 	return nil
 }
 
-func loop(state *State) {
-	if state.client == nil {
+func loop() {
+	if client == nil {
 		var err error
-		state.client, err = pulse.NewClient()
+		client, err = pulse.NewClient()
 		if err != nil {
 			log.Println("failed to create pulse client: " + err.Error())
 			return
 		}
 	}
 
-	err := state.fixMicVolume()
+	err := fixMicVolume()
 	if err != nil {
 		log.Println("failed to fix mic volume: " + err.Error())
-		state.client.Close()
-		state.client = nil
+		client.Close()
+		client = nil
 	}
 
-	err = state.checkEasyEffects()
+	err = checkEasyEffects()
 	if err != nil {
 		log.Println("failed to check easy effects: " + err.Error())
-		state.client.Close()
-		state.client = nil
+		client.Close()
+		client = nil
 	}
 }
 
+// type dbusInterface struct {}
+
+// func (export *dbusInterface) MuteMic(message dbus.Message) (string, error) {
+// 	muteMic = !muteMic
+// 	if muteMic {
+// 		log.Println("muted mic")
+// 	} else {
+// 		log.Println("unmuted mic")
+// 	}
+// 	loop() // run early
+// 	return "pass", nil
+// }
+
+// just use XF86AudioMicMute which shows a dialog on gnome
+// mute is also different from adjusting volume, so above code is respected
+
 func main() {
-	var state State
+	// conn, err := dbus.ConnectSessionBus()
+	// if err != nil {
+	// 	log.Println("failed to connect to session bus:", err)
+	// 	os.Exit(1)
+	// }
+	// defer conn.Close()
+
+	// err = conn.ExportAll(
+	// 	&dbusInterface{},
+	// 	"/cafe/maki/AudioHelper", "cafe.maki.AudioHelper",
+	// )
+	// if err != nil {
+	// 	log.Println("failed to export:", err)
+	// 	os.Exit(1)
+	// }
+
+	// _, err = conn.RequestName("cafe.maki.AudioHelper", dbus.NameFlagDoNotQueue)
+	// if err != nil {
+	// 	log.Println("failed to request name:", err)
+	// 	os.Exit(1)
+	// }
 
 	defer func() {
-		if state.client != nil {
-			state.client.Close()
+		if client != nil {
+			client.Close()
 		}
 	}()
 
 	for {
-		loop(&state)
+		loop()
 		time.Sleep(time.Millisecond * LOOP_INTERVAL)
 	}
 }

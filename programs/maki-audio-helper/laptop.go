@@ -9,6 +9,10 @@ import (
 	"strings"
 )
 
+var (
+	lastDefaultSinkID string
+)
+
 func setEasyEffectsBypass(bypass bool) error {
 	log.Printf("setting easy effects bypass to %v\n", bypass)
 
@@ -22,8 +26,8 @@ func setEasyEffectsBypass(bypass bool) error {
 	return exec.Command("easyeffects", "-b", bypassArg).Run()
 }
 
-func (state *State) checkEasyEffects() error {
-	defaultSink, err := state.client.DefaultSink()
+func checkEasyEffects() error {
+	defaultSink, err := client.DefaultSink()
 	if err != nil {
 		return errors.New("failed to get default sink: " + err.Error())
 	}
@@ -34,9 +38,9 @@ func (state *State) checkEasyEffects() error {
 	bypass := !strings.Contains(defaultSinkName, EASY_EFFECTS_ONLY_NAME) ||
 		strings.Contains(defaultSinkName, "Monitor of")
 
-	if state.lastDefaultSinkID != defaultSinkID {
+	if lastDefaultSinkID != defaultSinkID {
 		setEasyEffectsBypass(bypass)
-		state.lastDefaultSinkID = defaultSinkID
+		lastDefaultSinkID = defaultSinkID
 	}
 
 	return nil

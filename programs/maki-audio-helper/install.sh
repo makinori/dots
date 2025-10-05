@@ -30,4 +30,10 @@ systemctl --user restart --now maki-audio-helper.service
 
 sleep 0.5
 
+# echo ""
+# echo "bind follow command in gnome keybindings:"
+# echo "dbus-send --session --type=method_call --dest=cafe.maki.AudioHelper \
+# /cafe/maki/AudioHelper cafe.maki.AudioHelper.MuteMic"
+# echo ""
+
 systemctl --user status maki-audio-helper.service

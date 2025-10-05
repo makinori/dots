@@ -2,6 +2,6 @@
 
 package main
 
-func (state *State) checkEasyEffects() error {
+func checkEasyEffects() error {
 	return nil
 }

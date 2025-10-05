@@ -14,6 +14,9 @@ enum custom_keycodes {
 
 #define MUHENKAN KC_INT5
 
+// #define PANIC KC_F14
+#define PANIC KC_F20 // XF86AudioMicMute
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // qwerty
     [0] = LAYOUT_60_ansi(
@@ -36,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MOD_LAYER] = LAYOUT_60_ansi(
         KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,  KC_F12,   KC_DEL,
         KC_TAB,  KC_MPRV, KC_MPLY, KC_MNXT, KC_R,     KC_T,   KC_Y,    KC_PGDN, KC_UP,   KC_PGUP, KC_PSCR,  KC_SCRL, KC_PAUS,  KC_BSLS,
-        KC_TRNS, KC_F14,  KC_VOLD, KC_VOLU, KC_MUTE,  KC_G,   KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_INS,   KC_QUOT,           KC_ENT,
+        KC_TRNS, PANIC,   KC_VOLD, KC_VOLU, KC_MUTE,  KC_G,   KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_INS,   KC_QUOT,           KC_ENT,
         KC_LSFT, KC_F15,  KC_F16,  KC_F17,  RMB_DOWN, RMB_UP, KC_END,  KC_M,    KC_COMM, KC_DOT,  IJKL,                        KC_RSFT,
         KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,                                                        KC_RALT,  KC_TRNS, MUHENKAN, KC_RCTL
     )
