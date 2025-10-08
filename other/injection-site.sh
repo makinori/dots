@@ -1,10 +1,21 @@
 #!/bin/bash
 
-week=$(date +%V)
-echo "week $week"
+underline=$(tput smul)
+normal=$(tput sgr0)
 
-if [ $((week%2)) -eq 0 ]; then
-	echo "left leg";
+# use timezone in case traveling 
+year=$(date +%y)
+yearWeek=$(date +%W) # starting with monday 
+
+echo -n "inject ${underline}"
+if [ $((yearWeek%2)) -eq 1 ]; then
+	echo -n "left";
 else
-	echo "right leg";
+	echo -n "right";
 fi
+echo " leg${normal}"
+
+echo "on a ${underline}wednesday${normal}"
+
+totalYearWeeks=$(date -d "$year-12-31" +%W)
+echo "week $yearWeek/$totalYearWeeks"
