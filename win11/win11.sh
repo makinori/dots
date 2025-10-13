@@ -6,8 +6,8 @@ if [[ $1 == "stop" ]]; then
 fi
 
 if [[ $1 == "attach" ]]; then
-	vendor_id=""
-	product_id=""
+	vendor_id=$2
+	product_id=$3
 
 	# get ids from lsusb
 	if [[ $2 == "procontroller" ]]; then
@@ -22,8 +22,11 @@ if [[ $1 == "attach" ]]; then
 		# logitech c920
 		vendor_id="046d" 
 		product_id="082d" 
-	else
-		echo "Attach: controller, webcam"
+	fi
+
+	if [[ $vendor_id == "" && $product_id == "" ]]; then
+		echo "Attach: procontroller, 8bitdo, webcam<vendor id> <product id>"
+		echo "or manually specify <vendor id> <product id>"
 		exit 0
 	fi
 
