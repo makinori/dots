@@ -49,12 +49,14 @@ WantedBy=default.target
 ## Low latency high quality Schiit Modi 3+
 
 -   `mkdir -p ~/.config/wireplumber/wireplumber.conf.d`
--   Save [`51-schiit-modi.conf`](https://github.com/makinori/dots/tree/main/.config/wireplumber/wireplumber.conf.d/51-schiit-modi.conf)
+-   Save [`51-schiit-modi.conf`](.config/wireplumber/wireplumber.conf.d/51-schiit-modi.conf)
+-   `systemctl restart --user wireplumber`
+-   `pw-top`
 
 ## Setup DeaDBeeF
 
 -   `yay -S deadbeef-git deadbeef-mpris2-plugin deadbeef-plugin-fb-gtk3-git deadbeef-plugin-spectrogram-gtk3-git`
--   [`.config/deadbeef`](https://github.com/makinori/dots/tree/main/.config/deadbeef)
+-   [`.config/deadbeef`](.config/deadbeef)
 
 <!-- deadbeef-plugin-waveform-gtk3-git -->
 
@@ -63,4 +65,4 @@ WantedBy=default.target
 TODO: make spectrum and spectogram plugin and add album art support to directory browser
 
 -   `yay -S fooyin`
--   [`.config/fooyin`](https://github.com/makinori/dots/tree/main/.config/fooyin)
+-   [`.config/fooyin`](.config/fooyin)
