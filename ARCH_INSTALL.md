@@ -148,13 +148,12 @@ now we've setup partitions, we'll pacstrap install arch linux and install a boot
         initrd /initramfs-linux.img
         options root=LABEL=MAKI_ARCH
         options fsck.mode=force fsck.repair=yes
-        options rw loglevel=3 nvidia_drm.modeset=1
+        options rw loglevel=3
         ```
 
         -   if using encryption, update first options line to<br>
             `options cryptdevice=LABEL=MAKI_ARCH_CRYPT:root root=LABEL=MAKI_ARCH`
 
-        -   `nvidia_drm.modeset=1` needed for wayland on nvidia
         -   could remove `loglevel=3` and just set `quiet splash`
         -   could replace `root=LABEL=MAKI_ARCH` with `root=UUID=<uuid>`
 
