@@ -15,7 +15,7 @@ TODO: explain layout i guess
 ## Framework 13 with keyd
 
 -   Install `keyd` package
--   Save [`keyd.conf`](https://raw.githubusercontent.com/makinori/dots/main/keyboard/keyd.conf) to `/etc/keyd/default.conf`
+-   Save [`keyd.conf`](keyboard/keyd.conf) to `/etc/keyd/default.conf`
 -   Enable with `sudo systemd enable --now keyd`
 -   Notes:
     -   Top row keys are now **ESC, F1 to F12, Delete**, although **F10** doesn't work
@@ -30,8 +30,8 @@ TODO: explain layout i guess
 
 I don't know, it's not very reliable. But F14 to F19 isn't mapped so anything on X11 I think, so you can always use those.
 
--   [`fix-fn-keys.sh`](https://raw.githubusercontent.com/makinori/dots/main/keyboard/unused/fix-fn-keys.sh)
--   [`fix-fn-keys-modmap.sh`](https://raw.githubusercontent.com/makinori/dots/main/keyboard/unused/fix-fn-keys-modmap.sh)
+-   [`fix-fn-keys.sh`](keyboard/unused/fix-fn-keys.sh)
+-   [`fix-fn-keys-modmap.sh`](keyboard/unused/fix-fn-keys-modmap.sh)
 -   `yay -S inputplug`<br>
     `inputplug -c /home/maki/git/dots-maki/keyboard/fix-fn-keys.sh`
 

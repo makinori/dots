@@ -98,12 +98,12 @@
 
 -   setup alacritty
 
-    [`.config/alacritty/alacritty.yml`](https://raw.githubusercontent.com/makinori/dots/main/.config/alacritty/alacritty.yml) (haven't really touched this in a while)
+    [`.config/alacritty/alacritty.yml`](.config/alacritty/alacritty.yml) (haven't really touched this in a while)
 
 -   setup smb for sonos music library
 
     -   `sudo pacman -S samba`
-    -   [`/etc/samba/smb.conf`](https://raw.githubusercontent.com/makinori/dots/main/etc/samba/smb.conf)
+    -   [`/etc/samba/smb.conf`](etc/samba/smb.conf)
     -   `sudo systemctl enable smb && sudo systemctl start smb`
 
 -   guide to install affinity suite
