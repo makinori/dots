@@ -16,7 +16,7 @@ const (
 
 	// force mic volume
 	MIC_NAME   = "Yeti Nano"
-	MIC_VOLUME = 0.7
+	MIC_VOLUME = 0.6
 
 	// bypass easy effects (framework 13)
 	EASY_EFFECTS_ONLY_NAME = "Family 17h/19h/1ah HD Audio Controller"
