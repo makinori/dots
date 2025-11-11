@@ -1,0 +1,3 @@
+[Thumbnailer Entry]
+Exec=magick %i -thumbnail %sx%s png:%o
+MimeType=image/jp2;image/x-jp2-codestream;

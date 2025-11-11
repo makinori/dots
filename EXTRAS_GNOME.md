@@ -72,12 +72,18 @@
 
 ## Nautilus
 
-If using VSCode or VSCodium, add button to open folders
+-   vscode/codium buttons to open files and folders
 
-`yay -S --noconfirm code-nautilus-git`
+    `yay -S --noconfirm code-nautilus-git`
 
-Would recommend `nautilus-code-git` but I like to<br/>
-`ln -s /usr/bin/codium /usr/bin/code` which above will show only once
+    Would recommend `nautilus-code-git` but I like to<br/>
+    `ln -s /usr/bin/codium /usr/bin/code` which above will show only once
+
+-   jpeg2000 thumbnails
+
+    `mkdir -p ~/.local/share/thumbnailers`<br>
+    write [jp2.thumbnailer](other/jp2.thumbnailer)<br>
+    `nautilus -q && rm -rf ~/.cache/thumbnails/fail`
 
 ## Extensions
 
