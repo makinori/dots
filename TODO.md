@@ -10,3 +10,4 @@
 -   `.config/pipewire/pipewire.conf.d/fix-fw13-crackling.conf`
 -   fw3 amdgpu crashing `options amdgpu.dcdebugmask=0x12`
     DC_DEBUG_MASK https://github.com/torvalds/linux/blob/master/drivers/gpu/drm/amd/include/amd_shared.h
+-   server use systemd-networkd-wait-online.service for podman so podman-restart.service doesn't happen too early
