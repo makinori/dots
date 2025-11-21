@@ -85,6 +85,16 @@
 
     https://github.com/bootchk/resynthesizer/wiki/Quick-user's-guide-to-the-Resynthesizer-plugins-for-GIMP
 
+-   setup seafile music mount<br>
+    `yay -S rclone` and configure `maki-music`<br>
+    copy `.config/systemd/user/home-maki-Music.*`<br>
+    ```
+    systemctl --user daemon-reload
+    systemctl --user start home-maki-Music.mount
+    systemctl --user status home-maki-Music.mount
+    systemctl --user enable home-maki-Music.automount
+    ```
+
 ## Not really using these
 
 -   when using grub2win (try to avoid it i guess)

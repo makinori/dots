@@ -1,0 +1,33 @@
+[Unit]
+Description=/home/maki/Music
+Wants=network-online.target
+After=network-online.target
+After=local-fs.target
+
+[Mount]
+Type=rclone
+What=maki-music:
+Where=/home/maki/Music
+Options=rw,_netdev,log-level=INFO,dir-cache-time=24h,poll-interval=30s,vfs-cache-mode=full,vfs-cache-max-size=50G,vfs-cache-max-age=1h,buffer-size=128M,max-read-ahead=64M
+
+# https://rclone.org/commands/rclone_mount/
+# Options=rw,_netdev,allow_other,args2env,vfs-cache-mode=writes,config=/etc/rclone.conf,cache-dir=/var/rclone
+
+# https://www.reddit.com/r/rclone/comments/sqt3y0/rclone_streaming_movies_from_onedrive_not_ok_on/
+# "rclone mount Drive: /media \
+#      --user-agent=1000 \
+#      --dir-cache-time 1000h \
+#      --poll-interval 15s \
+#      --umask 000 \
+#      --cache-dir=/cache \
+#      --drive-acknowledge-abuse \
+#      --vfs-cache-mode full \
+#      --vfs-cache-max-size 500G \
+#      --vfs-cache-max-age 1h \
+#      --drive-chunk-size 128M \
+#      --log-file /logs/rclone_mount.log \
+#      --buffer-size 256M \
+#      --log-level INFO"
+
+# also maybe
+# --max-read-ahead 200M
