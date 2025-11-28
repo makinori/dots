@@ -94,6 +94,8 @@
     systemctl --user status home-maki-Music.mount
     systemctl --user enable home-maki-Music.automount
     ```
+    might need to update `.config/user-dirs.dirs`<br>
+    and run `xdg-user-dirs-update`
 
 ## Not really using these
 
