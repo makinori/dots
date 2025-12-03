@@ -22,7 +22,7 @@ mkdir -p ~/bandcamp-dl
 
 args=(
 	# --embed-art # just makes everything bigger. only do for tracks not albums
-	--no-slugify
+	# --no-slugify
 	--keep-spaces
 	--keep-upper
 	--base-dir ~/bandcamp-dl
