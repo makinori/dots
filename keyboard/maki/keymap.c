@@ -46,6 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool ijkl_as_arrow_keys = false;
+bool user_holding_alt = false;
 
 #define HANDLE_AS_USUAL(key)                           \
     if (record->event.pressed) {                       \
@@ -90,6 +91,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case RMB_UP:
             unregister_code(MS_BTN2);
             return false;
+
+        // use alt+q/e for workspace switching
+        // however immediately let go after q/e is pressed
+
+        case KC_LEFT_ALT:
+            user_holding_alt = record->event.pressed;
+            break;
+
+        case KC_Q:
+        case KC_E:
+            if (record->event.pressed == false) break;
+            if (
+                get_mods() == MOD_BIT(KC_LEFT_ALT) ||
+                // above wont work if we keep holding alt
+                (get_mods() == 0 && user_holding_alt)
+            ) {
+                register_code(KC_LEFT_ALT);
+                register_code(keycode);
+                unregister_code(KC_LEFT_ALT);
+                unregister_code(keycode);
+                return false;
+            }
+            break;
     }
 
     if (!ijkl_as_arrow_keys) {
