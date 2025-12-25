@@ -88,14 +88,21 @@
 -   setup seafile music mount<br>
     `yay -S rclone` and configure `maki-music`<br>
     copy `.config/systemd/user/home-maki-Music.*`<br>
+
     ```
     systemctl --user daemon-reload
     systemctl --user start home-maki-Music.mount
     systemctl --user status home-maki-Music.mount
     systemctl --user enable home-maki-Music.automount
     ```
+
     might need to update `.config/user-dirs.dirs`<br>
     and run `xdg-user-dirs-update`
+
+-   force use relay with tailscale/headscale<br>
+    `sudo systemctl edit tailscaled`<br>
+    add `Environment=TS_DEBUG_ALWAYS_USE_DERP=true`<br>
+    `sudo systemctl restart tailscaled`
 
 ## Not really using these
 
